@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banda de Rock - Portfólio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+    <header class="header">
+        <div class="header-container">
+            <img class="header-logo" src="../Assets/logo.png" />
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#empresas-parceiras">Empresas Parceiras</a></li>
+                    <li><a href="#sobre">Sobre nós</a></li>
+                    <li><a href="#ensinar-cadastro">Como participar?</a></li>
+                    <li><a href="#">Cadastre-se</a></li>
+                </ul>
+            </nav>
+            <button id="menuToggle" class="menu-btn">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Menu Lateral -->
+    <div id="menuSidebar" class="sidebar">
+        <button id="closeMenu" class="close-btn">&times;</button>
+        <ul class="menu-list">
+            <li><a href="#empresas-parceiras">Empresas Parceiras</a></li>
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#ensinar-cadastro">Como participar?</a></li>
+            <li><a href="#">Cadastrar</a></li>
+        </ul>
+        <div class="menu-footer">
+            <span class="perfil-icon">&#128100;</span>
+            <span class="perfil-text">Perfil</span>
+        </div>
+    </div>
+
+    <!-- Carrossel de tela cheia -->
+    <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <!-- Indicadores (os pontinhos) -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          </div>
+      
+          <!-- Itens do carrossel -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="/Flyer NSC.png" class="d-block w-100 img-carousel" alt="Slide 1">
+            </div>
+            <div class="carousel-item">
+              <img src="/Flyer NSC.png" class="d-block w-100 img-carousel" alt="Slide 2">
+            </div>
+          </div>
+      
+          <!-- Botões de navegação -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+      
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+      </section>
+      
+    <section class="video-section">
+        <h2 class="video-title">Vídeos</h2>
+        <div class="video-filters">
+            <button class="filter-btn active" onclick="filterVideos('nacional')">Nacional</button>
+            <button class="filter-btn" onclick="filterVideos('internacional')">Internacional</button>
+            <button class="filter-btn" onclick="filterVideos('flashbacks')">Flashbacks</button>
+        </div>  
+
+        <div class="video-carousel-container">
+            <div id="nacional" class="video-carousel active-carousel">
+                <iframe src="https://www.youtube.com/embed/aNtGfPYanJw" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/n37EnvffTT0" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/WM46NDbpahg" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="internacional" class="video-carousel">
+                <iframe src="https://www.youtube.com/embed/_d1qAjeI-NI" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/411Sr9JVsuk" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/jWzE2LHYi28" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div id="flashbacks" class="video-carousel">
+                <iframe src="https://www.youtube.com/embed/AqcRTdcpPok" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/26qwdpLtw-A" frameborder="0" allowfullscreen></iframe>
+                <iframe src="https://www.youtube.com/embed/jWzE2LHYi28" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section class="band-section" id="integrantes">
+        <h2 class="band-title">Integrantes da Banda</h2>
+        <div class="band-carousel-container">
+            <div id="band-carousel" class="band-carousel">
+                <div class="band-member">
+                    <img src="integrante1.jpg" alt="Integrante 1">
+                    <p>Integrante 1</p>
+                </div>
+                <div class="band-member">
+                    <img src="integrante2.jpg" alt="Integrante 2">
+                    <p>Integrante 2</p>
+                </div>
+                <div class="band-member">
+                    <img src="integrante3.jpg" alt="Integrante 3">
+                    <p>Integrante 3</p>
+                </div>
+                <div class="band-member">
+                    <img src="integrante3.jpg" alt="Integrante 3">
+                    <p>Integrante 3</p>
+                </div>
+                <div class="band-member">
+                    <img src="integrante3.jpg" alt="Integrante 3">
+                    <p>Integrante 3</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contato">
+        <h2>Fale Conosco</h2>
+        <button onclick="enviarMensagem()">Enviar mensagem no WhatsApp</button>
+    </section>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
