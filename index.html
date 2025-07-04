@@ -2,142 +2,454 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banda de Rock - Portfólio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Banda NSC - Rock autêntico brasileiro. Conheça nossa história, músicas e agenda de shows.">
+  <title>Banda NSC - Rock Autêntico Brasileiro</title>
+  <link rel="stylesheet" href="site.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Bebas+Neue&family=Rock+Salt&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script defer src="script.js"></script>
 </head>
 
 <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-        <div class="header-container">
-            <img class="header-logo" src="../Assets/logo.png" />
-            <nav class="nav-menu">
-                <ul>
-                    <li><a href="#empresas-parceiras">Empresas Parceiras</a></li>
-                    <li><a href="#sobre">Sobre nós</a></li>
-                    <li><a href="#ensinar-cadastro">Como participar?</a></li>
-                    <li><a href="#">Cadastre-se</a></li>
-                </ul>
-            </nav>
-            <button id="menuToggle" class="menu-btn">&#9776;</button>
-        </div>
-    </header>
 
-    <!-- Menu Lateral -->
-    <div id="menuSidebar" class="sidebar">
-        <button id="closeMenu" class="close-btn">&times;</button>
-        <ul class="menu-list">
-            <li><a href="#empresas-parceiras">Empresas Parceiras</a></li>
-            <li><a href="#sobre">Sobre nós</a></li>
-            <li><a href="#ensinar-cadastro">Como participar?</a></li>
-            <li><a href="#">Cadastrar</a></li>
-        </ul>
-        <div class="menu-footer">
-            <span class="perfil-icon">&#128100;</span>
-            <span class="perfil-text">Perfil</span>
-        </div>
+  <!-- Header -->
+  <header id="header" class="header">
+    <div class="container flex-space-between">
+      <img class="logo" src="./Assets/logo-nsc.png"></img>
+      <nav id="nav" class="nav">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">Sobre</a>
+        <a href="#members" class="nav-link">Integrantes</a>
+        <a href="#music" class="nav-link">Músicas</a>
+        <a href="#gallery" class="nav-link">Galeria</a>
+        <a href="#shows" class="nav-link">Shows</a>
+        <a href="#contact" class="nav-link">Contato</a>
+      </nav>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
     </div>
+  </header>
 
-    <!-- Carrossel de tela cheia -->
-    <section>
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!-- Indicadores (os pontinhos) -->
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content fade-in">
+      <h2>BANDA NSC</h2>
+      <p class="tagline">Som autêntico • Rock brasileiro • Energia inigualável</p>
+      <div class="hero-buttons">
+        <button onclick="scrollToSection('music')" class="btn-primary">
+          <i class="fas fa-music"></i> Ouça agora
+        </button>
+        <button onclick="scrollToSection('shows')" class="btn-outline">
+          <i class="fas fa-calendar-alt"></i> Próximos shows
+        </button>
+      </div>
+    </div>
+    <div class="scroll-down" onclick="scrollToSection('about')">
+      <i class="fas fa-chevron-down pulse-slow"></i>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title slide-in-left" style="margin-bottom: 40px;">Nossa História</h2>
+      <div class="about-grid">
+        <div class="about-text fade-in">
+          <p class="lead">A <strong>Banda NSC</strong> nasceu no ano de 2024, e já está a mais de 1 ano em atuação </p>
+
+          <p style="margin-bottom: 20px;">
+            A NSC nasceu de forma despretensiosa, quando Leonardo (bateria) e
+           Gabriela (voz) começaram a gravar vídeos acústicos de voz e violão para o YouTube, só por diversão.
+          </p>
+
+          <p style="margin-bottom: 20px;">Logo depois, surgiu um convite pra tocar em um evento 
+            e a gente pensou: por que não montar uma banda? Chamamos
+             amigos músicos que curtissem a mesma vibe e, desde então, nunca mais paramos.</p>
+          
+          <p>Hoje, seguimos levando nossa essência aos palcos: 
+            um som que mistura o rock que a gente ama com
+             versões que ganham nossa cara. Tocamos porque amamos, 
+             e cada show é uma troca verdadeira com quem está ali pra curtir junto.</p>
+          <div class="about-stats">
+            <div class="stat-card">
+              <span class="stat-number">50+</span>
+              <span class="stat-label">Shows</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">2</span>
+              <span class="stat-label">Anos de estrada</span>
+            </div>
           </div>
-      
-          <!-- Itens do carrossel -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="/Flyer NSC.png" class="d-block w-100 img-carousel" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-              <img src="/Flyer NSC.png" class="d-block w-100 img-carousel" alt="Slide 2">
+        </div>
+        <div class="about-image">
+          <img class="band-logo" src="./Assets/logo-nsc.png"></img>
+          <div class="logo-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Members Section -->
+  <section id="members" class="section bg-dark">
+    <div class="container">
+      <h2 class="section-title">Os Integrantes</h2>
+      <div class="members-grid">
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Gabriela B. Fernandes</h3>
+          <p class="role">Vocal</p>
+          <p class="bio">Voz marcante e riffs poderosos que definem o som da banda.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/gabriela_best_fernandes/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Vitor Molina</h3>
+          <p class="role">Vocal e Guitarra</p>
+          <p class="bio">Grooves pesados e presença de palco inigualável.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/vitormolina_/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Giovanni B. Fernandes</h3>
+          <p class="role">Vocal e Guitarra</p>
+          <p class="bio">Ritmo preciso e explosivo que move a banda.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/giovanni_bestana/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Leonardo Figueiredo</h3>
+          <p class="role">Baterista</p>
+          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/leonardo.fig_/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Leonardo B. Oliveira</h3>
+          <p class="role">Baixista</p>
+          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/leonardo.b_oliveira/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="member-card">
+          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          </div>
+          <h3>Dinaldo Figueiredo</h3>
+          <p class="role">Técnico de Som</p>
+          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <div class="social-links">
+            <a href="https://www.instagram.com/figueiredodinaldo/"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music Section -->
+  <section id="music" class="music-section">
+    <div class="container">
+      <h2 class="section-title">Músicas</h2>
+
+      <!-- Player -->
+      <div class="music-player">
+        <div class="media-container" id="media-container"></div>
+
+        <div class="player-controls" id="full-controls">
+          <div class="song-info-now">
+            <img id="current-song-image" src="https://via.placeholder.com/150" alt="Capa da música" class="album-art">
+            <div class="song-details">
+              <h4 id="current-song-title">Título da Música</h4>
+              <small id="current-song-album">Álbum</small>
+              <div class="song-actions">
+                <button id="shuffle-btn" class="control-btn" title="Aleatório">
+                  <i class="fas fa-random"></i>
+                </button>
+                <button id="repeat-btn" class="control-btn" title="Repetir">
+                  <i class="fas fa-redo"></i>
+                </button>
+              </div>
             </div>
           </div>
-      
-          <!-- Botões de navegação -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+
+          <div class="controls">
+            <button id="prev-btn" class="control-btn" title="Anterior">
+              <i class="fas fa-step-backward"></i>
+            </button>
+            <button id="play-btn" class="control-btn play-pause" title="Play/Pause">
+              <i class="fas fa-play"></i>
+            </button>
+            <button id="next-btn" class="control-btn" title="Próxima">
+              <i class="fas fa-step-forward"></i>
+            </button>
+          </div>
+
+          <div class="progress-container">
+            <span id="current-time" class="time">0:00</span>
+            <div class="progress-bar-wrapper">
+              <div class="progress-bar" id="progress-bar"></div>
+              <div class="progress-bar-bg" id="progress-bar-bg"></div>
+            </div>
+            <span id="duration" class="time">0:00</span>
+          </div>
+
+          <div class="secondary-controls">
+            <div class="volume-control">
+              <button id="mute-btn" class="control-btn" title="Mudo">
+                <i class="fas fa-volume-up"></i>
+              </button>
+              <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+            </div>
+            <button id="fullscreen-btn" class="control-btn" title="Tela cheia">
+              <i class="fas fa-expand"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista de músicas -->
+      <div class="song-list-header">
+        <h3>Playlist</h3>
+        <div class="playlist-actions">
+          <span id="playlist-info">3 músicas</span>
+        </div>
+      </div>
+      <div class="song-list" id="song-list"></div>
+    </div>
+  </section>
+
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="section bg-dark">
+    <div class="container">
+      <h2 class="section-title">Galeria</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-event="carioca-club">
+          <img src="./Assets/teste.jpg" loading="lazy" alt="Banda NSC no palco do Carioca Club"
+            class="gallery-image">
+          <div class="gallery-caption">
+            <h3>Shows</h3>
+            <span>2024 • 10 fotos</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-event="ensaio-estudio">
+          <img src="./Assets/Ensaio NSC/6.jpg" loading="lazy" alt="Banda NSC ensaiando no estúdio"
+            class="gallery-image">
+          <div class="gallery-caption">
+            <h3>Ensaio no Estúdio</h3>
+            <span>2024 • 8 fotos</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-event="publico-show">
+          <img src="./Assets/Público/2.jpg" loading="lazy" alt="Público animado no show da Banda NSC"
+            class="gallery-image">
+          <div class="gallery-caption">
+            <h3>Público no Show</h3>
+            <span>2025 • 12 fotos</span>
+          </div>
+        </div>
+
+        <div class="gallery-item" data-event="gravacao-single">
+          <img src="./Assets/Bastidores/1.jpg" loading="lazy" alt="Banda NSC gravando novo single"
+            class="gallery-image">
+          <div class="gallery-caption">
+            <h3>Bastidores</h3>
+            <span>2024 • 10 fotos</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn-outline" onclick="window.open('https://instagram.com/banda_nsc', '_blank')">
+          <i class="fab fa-instagram"></i> Veja mais no Instagram
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shows Section -->
+  <section id="shows" class="section">
+    <div class="container">
+      <h2 class="section-title">Próximos Shows</h2>
+      <div class="shows-list" id="shows-list"></div>
+
+      <div class="newsletter">
+        <h3>Quer receber alertas de novos shows?</h3>
+        <form id="newsletter-form" class="newsletter-form">
+          <input type="email" placeholder="Seu melhor e-mail" required>
+          <button type="submit" class="btn-primary">Assinar</button>
+        </form>
+        <p class="small-text">Não enviaremos spam. Respeitamos sua privacidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-dark">
+    <div class="container">
+      <h2 class="section-title">Fale Conosco</h2>
+      <div class="contact-grid">
+        <div class="contact-card" onclick="openWhatsApp()">
+          <div class="contact-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Fale conosco diretamente</p>
+          <button class="btn-outline">Chamar no WhatsApp</button>
+        </div>
+
+        <div class="contact-card" onclick="location.href='mailto:contato@nscbanda.com.br'">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <h3>E-mail</h3>
+          <p>contato@nscbanda.com.br</p>
+          <button class="btn-outline">Enviar e-mail</button>
+        </div>
+
+        <div class="contact-card" onclick="window.open('https://instagram.com/nscbanda', '_blank')">
+          <div class="contact-icon">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <h3>Instagram</h3>
+          <p>@nscbanda</p>
+          <button class="btn-outline">Seguir</button>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Contrato para Shows</h3>
+          <p>produção@nscbanda.com.br</p>
+          <button class="btn-outline">Contratar</button>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <h3>Mensagem Direta</h3>
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Seu e-mail" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h2>NSC</h2>
+          <p>Rock autêntico brasileiro</p>
+        </div>
+
+        <div class="footer-links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#music">Músicas</a></li>
+            <li><a href="#shows">Shows</a></li>
+            <li><a href="#contact">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-social">
+          <h4>Redes Sociais</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-spotify"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Banda NSC. Todos os direitos reservados.</p>
+        <p class="quote">"A música é a linguagem universal que conecta todas as almas."</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" class="back-to-top" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox-modal" class="lightbox">
+    <div class="lightbox-container">
+      <button id="lightbox-close" class="lightbox-close" aria-label="Fechar galeria">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <button id="lightbox-prev" class="lightbox-nav prev" aria-label="Foto anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <div class="lightbox-content">
+        <div id="lightbox-slider" class="lightbox-slider"></div>
+      </div>
+
+      <button id="lightbox-next" class="lightbox-nav next" aria-label="Próxima foto">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="lightbox-footer">
+        <div id="lightbox-counter" class="lightbox-counter">1/10</div>
+        <div class="lightbox-zoom">
+          <button id="zoom-in" class="zoom-btn" aria-label="Aumentar zoom">
+            <i class="fas fa-search-plus"></i>
           </button>
-      
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próximo</span>
+          <button id="zoom-out" class="zoom-btn" aria-label="Reduzir zoom">
+            <i class="fas fa-search-minus"></i>
+          </button>
+          <button id="zoom-reset" class="zoom-btn" aria-label="Resetar zoom">
+            <i class="fas fa-sync-alt"></i>
           </button>
         </div>
-      </section>
-      
-    <section class="video-section">
-        <h2 class="video-title">Vídeos</h2>
-        <div class="video-filters">
-            <button class="filter-btn active" onclick="filterVideos('nacional')">Nacional</button>
-            <button class="filter-btn" onclick="filterVideos('internacional')">Internacional</button>
-            <button class="filter-btn" onclick="filterVideos('flashbacks')">Flashbacks</button>
-        </div>  
-
-        <div class="video-carousel-container">
-            <div id="nacional" class="video-carousel active-carousel">
-                <iframe src="https://www.youtube.com/embed/aNtGfPYanJw" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/n37EnvffTT0" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/WM46NDbpahg" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <div id="internacional" class="video-carousel">
-                <iframe src="https://www.youtube.com/embed/_d1qAjeI-NI" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/411Sr9JVsuk" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/jWzE2LHYi28" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <div id="flashbacks" class="video-carousel">
-                <iframe src="https://www.youtube.com/embed/AqcRTdcpPok" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/26qwdpLtw-A" frameborder="0" allowfullscreen></iframe>
-                <iframe src="https://www.youtube.com/embed/jWzE2LHYi28" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-    </section>
-
-    <section class="band-section" id="integrantes">
-        <h2 class="band-title">Integrantes da Banda</h2>
-        <div class="band-carousel-container">
-            <div id="band-carousel" class="band-carousel">
-                <div class="band-member">
-                    <img src="integrante1.jpg" alt="Integrante 1">
-                    <p>Integrante 1</p>
-                </div>
-                <div class="band-member">
-                    <img src="integrante2.jpg" alt="Integrante 2">
-                    <p>Integrante 2</p>
-                </div>
-                <div class="band-member">
-                    <img src="integrante3.jpg" alt="Integrante 3">
-                    <p>Integrante 3</p>
-                </div>
-                <div class="band-member">
-                    <img src="integrante3.jpg" alt="Integrante 3">
-                    <p>Integrante 3</p>
-                </div>
-                <div class="band-member">
-                    <img src="integrante3.jpg" alt="Integrante 3">
-                    <p>Integrante 3</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contato">
-        <h2>Fale Conosco</h2>
-        <button onclick="enviarMensagem()">Enviar mensagem no WhatsApp</button>
-    </section>
-    <script src="script.js"></script>
+      </div>
+    </div>
+  </div>
 
 </body>
 
