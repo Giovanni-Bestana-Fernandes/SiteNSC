@@ -52,25 +52,41 @@ const songs = [
 const shows = [
   {
     date: { day: '20', month: 'JUL', year: '2025' },
-    city: 'Barra Bonita, SP',
+    city: 'BARRA BONITA, SP',
     venue: 'Encontro Carros Antigos',
     note: 'NSC / Aueba Trio',
     link: '#',
     hasTickets: false
   },
   {
-    date: { day: '26', month: 'JUL', year: '2024' },
+    date: { day: '26', month: 'JUL', year: '2025' },
     city: 'JAÚ, SP',
-    venue: 'Circo Voador',
-    note: 'NSC / COVER LEGIÃO URBANA',
+    venue: 'Riverside Pub',
+    note: 'NSC / Cover Legião Urbana',
     link: '#',
     hasTickets: false
   },
   {
-    date: { day: '05', month: 'SET', year: '2024' },
+    date: { day: '16', month: 'AGO', year: '2025' },
     city: 'BARRA BONITA, SP',
-    venue: 'Stone Music Bar',
-    note: 'Show acústico',
+    venue: 'Baile de Máscaras - AABB',
+    note: 'NSC / BANDA DELPHOS',
+    link: '#',
+    hasTickets: false
+  },
+  {
+    date: { day: '13', month: 'SET', year: '2025' },
+    city: 'BARRA BONITA, SP',
+    venue: 'Festa Privada',
+    note: 'Show Completo',
+    link: '#',
+    hasTickets: false
+  },
+  {
+    date: { day: '22', month: 'NOV', year: '2025' },
+    city: 'BARRA BONITA, SP',
+    venue: 'Festa Privada',
+    note: 'Show Completo',
     link: '#',
     hasTickets: false
   }
