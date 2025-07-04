@@ -600,3 +600,166 @@ document.addEventListener('DOMContentLoaded', function () {
   init();
 
 });
+
+
+// Contratação - Modal e Formulário
+document.addEventListener('DOMContentLoaded', function () {
+  // Elementos do modal de contratação
+  const hireButton = document.getElementById('hire-button');
+  const modal = document.getElementById('hire-modal');
+  const closeButton = document.querySelector('.close-modal');
+  const hireForm = document.getElementById('hire-form');
+
+  // Abrir modal ao clicar em Contratar
+  if (hireButton) {
+    hireButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+
+      // Focar no primeiro campo ao abrir
+      setTimeout(() => {
+        document.getElementById('hire-name').focus();
+      }, 100);
+    });
+  }
+
+  // Fechar modal
+  if (closeButton) {
+    closeButton.addEventListener('click', function () {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+  }
+
+  // Fechar ao clicar fora do modal
+  window.addEventListener('click', function (e) {
+    if (e.target === modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Fechar com ESC
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.style.display === 'block') {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  });
+
+  // Envio do formulário via mailto
+  if (hireForm) {
+    hireForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const requiredFields = hireForm.querySelectorAll('[required]');
+      let isValid = true;
+
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          field.style.borderColor = 'var(--rock-red)';
+          isValid = false;
+          field.classList.add('shake');
+          setTimeout(() => field.classList.remove('shake'), 500);
+        } else {
+          field.style.borderColor = '#333';
+        }
+      });
+
+      if (!isValid) {
+        const oldError = hireForm.querySelector('.form-error');
+        if (oldError) oldError.remove();
+
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'form-error';
+        errorMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+        hireForm.insertBefore(errorMessage, hireForm.firstChild);
+
+        hireForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
+      const formData = new FormData(hireForm);
+      const formObject = {};
+      formData.forEach((value, key) => formObject[key] = value);
+
+      const subject = `Proposta de contratação - ${formObject.name}`;
+      const body = `
+      Nome: ${formObject.name}
+      E-mail: ${formObject.email}
+      Telefone/WhatsApp: ${formObject.phone}
+
+      Tipo de Evento: ${formObject.event_type}
+      Data do Evento: ${formObject.event_date}
+      Local do Evento: ${formObject.event_location}
+      Duração do Show: ${formObject.show_duration}
+
+      Faixa de Orçamento: ${formObject.budget_range}
+      Estrutura Disponibilizada: ${formObject.event_structure || 'Não informada'}
+
+      Detalhes Adicionais:
+      ${formObject.event_details || 'Nenhum'}
+
+      -------------------------
+      Enviado pelo site da Banda NSC
+      `.trim();
+
+      const mailtoLink = `mailto:ninguem.sabe.ao.certo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.location.href = mailtoLink;
+
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      hireForm.reset();
+    });
+  }
+
+  // Validação em tempo real
+  const requiredInputs = document.querySelectorAll('#hire-form [required]');
+  requiredInputs.forEach(input => {
+    input.addEventListener('input', function () {
+      if (this.value.trim()) {
+        this.style.borderColor = '#333';
+      }
+    });
+  });
+
+  // Envio do formulário de mensagem direta
+  const contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('direct-name').value.trim();
+      const email = document.getElementById('direct-email').value.trim();
+      const telefone = document.getElementById('direct-telefone').value.trim();
+      const message = document.getElementById('direct-message').value.trim();
+
+      if (!name || !email || !message) {
+        alert('Por favor, preencha todos os campos antes de enviar.');
+        return;
+      }
+
+      const subject = `Mensagem de ${name}`;
+      const body = `
+      Nome: ${name}
+      E-mail: ${email}
+      Telefone: ${telefone}
+
+      Mensagem:
+      ${message}
+
+      -------------------------
+      Enviado pelo site da Banda NSC
+      `.trim();
+
+      const mailtoLink = `mailto:producao@nscbanda.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
+
+      contactForm.reset();
+    });
+  }
+
+});

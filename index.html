@@ -68,17 +68,17 @@
 
           <p style="margin-bottom: 20px;">
             A NSC nasceu de forma despretensiosa, quando Leonardo (bateria) e
-           Gabriela (voz) começaram a gravar vídeos acústicos de voz e violão para o YouTube, só por diversão.
+            Gabriela (voz) começaram a gravar vídeos acústicos de voz e violão para o YouTube, só por diversão.
           </p>
 
-          <p style="margin-bottom: 20px;">Logo depois, surgiu um convite pra tocar em um evento 
+          <p style="margin-bottom: 20px;">Logo depois, surgiu um convite pra tocar em um evento
             e a gente pensou: por que não montar uma banda? Chamamos
-             amigos músicos que curtissem a mesma vibe e, desde então, nunca mais paramos.</p>
-          
-          <p>Hoje, seguimos levando nossa essência aos palcos: 
+            amigos músicos que curtissem a mesma vibe e, desde então, nunca mais paramos.</p>
+
+          <p>Hoje, seguimos levando nossa essência aos palcos:
             um som que mistura o rock que a gente ama com
-             versões que ganham nossa cara. Tocamos porque amamos, 
-             e cada show é uma troca verdadeira com quem está ali pra curtir junto.</p>
+            versões que ganham nossa cara. Tocamos porque amamos,
+            e cada show é uma troca verdadeira com quem está ali pra curtir junto.</p>
           <div class="about-stats">
             <div class="stat-card">
               <span class="stat-number">50+</span>
@@ -251,8 +251,7 @@
       <h2 class="section-title">Galeria</h2>
       <div class="gallery-grid">
         <div class="gallery-item" data-event="carioca-club">
-          <img src="./Assets/teste.jpg" loading="lazy" alt="Banda NSC no palco do Carioca Club"
-            class="gallery-image">
+          <img src="./Assets/teste.jpg" loading="lazy" alt="Banda NSC no palco do Carioca Club" class="gallery-image">
           <div class="gallery-caption">
             <h3>Shows</h3>
             <span>2024 • 10 fotos</span>
@@ -326,31 +325,31 @@
           <button class="btn-outline">Chamar no WhatsApp</button>
         </div>
 
-        <div class="contact-card" onclick="location.href='mailto:contato@nscbanda.com.br'">
+        <div class="contact-card" onclick="location.href='mailto:ninguem.sabe.ao.certo@gmail.com'">
           <div class="contact-icon">
             <i class="fas fa-envelope"></i>
           </div>
           <h3>E-mail</h3>
-          <p>contato@nscbanda.com.br</p>
+          <p>ninguem.sabe.ao.certo@gmail.com</p>
           <button class="btn-outline">Enviar e-mail</button>
         </div>
 
-        <div class="contact-card" onclick="window.open('https://instagram.com/nscbanda', '_blank')">
+        <div class="contact-card" onclick="window.open('https://instagram.com/banda_nsc', '_blank')">
           <div class="contact-icon">
             <i class="fab fa-instagram"></i>
           </div>
           <h3>Instagram</h3>
-          <p>@nscbanda</p>
+          <p>@banda_nsc</p>
           <button class="btn-outline">Seguir</button>
         </div>
 
-        <div class="contact-card">
+        <div class="contact-card" id="hire-trigger">
           <div class="contact-icon">
             <i class="fas fa-users"></i>
           </div>
           <h3>Contrato para Shows</h3>
           <p>produção@nscbanda.com.br</p>
-          <button class="btn-outline">Contratar</button>
+          <button class="btn-outline" id="hire-button">Contratar</button>
         </div>
       </div>
 
@@ -358,17 +357,21 @@
         <h3>Mensagem Direta</h3>
         <form id="contact-form" class="contact-form">
           <div class="form-group">
-            <input type="text" placeholder="Seu nome" required>
+            <input type="text" id="direct-name" name="name" placeholder="Seu nome" required>
           </div>
           <div class="form-group">
-            <input type="email" placeholder="Seu e-mail" required>
+            <input type="email" id="direct-email" name="email" placeholder="Seu e-mail">
           </div>
           <div class="form-group">
-            <textarea placeholder="Sua mensagem" rows="5" required></textarea>
+            <input type="tel" id="direct-telefone" name="telefone" placeholder="Seu telefone" required>
+          </div>
+          <div class="form-group">
+            <textarea id="direct-message" name="message" placeholder="Sua mensagem" rows="5" required></textarea>
           </div>
           <button type="submit" class="btn-primary">Enviar Mensagem</button>
         </form>
       </div>
+
     </div>
   </section>
 
@@ -448,6 +451,113 @@
           </button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Modal de Contratação -->
+  <div id="hire-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <h2>Contrate a Banda NSC</h2>
+      <p class="subtitle">Preencha o formulário abaixo e entraremos em contato para fecharmos seu evento!</p>
+
+      <form id="hire-form" class="hire-form">
+        <div class="form-section">
+          <h3>Seus Dados</h3>
+          <div class="form-group-contract">
+            <label for="hire-name">Nome Completo*</label>
+            <input type="text" id="hire-name" name="name" required>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-email">E-mail*</label>
+            <input type="email" id="hire-email" name="email" required>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-phone">Telefone/WhatsApp*</label>
+            <input type="tel" id="hire-phone" name="phone" required>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Detalhes do Evento</h3>
+          <div class="form-group-contract">
+            <label for="hire-event">Tipo de Evento*</label>
+            <select id="hire-event" name="event_type" required>
+              <option value="">Selecione...</option>
+              <option value="Casamento">Casamento</option>
+              <option value="Aniversário">Aniversário</option>
+              <option value="Festa Corporativa">Festa Corporativa</option>
+              <option value="Bar/Show">Bar/Show</option>
+              <option value="Festival">Festival</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-date">Data do Evento*</label>
+            <input type="date" id="hire-date" name="event_date" required>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-location">Local do Evento*</label>
+            <input type="text" id="hire-location" name="event_location" placeholder="Cidade, Estado e local específico"
+              required>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-duration">Duração do Show*</label>
+            <select id="hire-duration" name="show_duration" required>
+              <option value="">Selecione...</option>
+              <option value="1 hora">1 hora</option>
+              <option value="1h30">1 hora e 30 minutos</option>
+              <option value="2 horas">2 horas</option>
+              <option value="2h30">2 horas e 30 minutos</option>
+              <option value="3 horas">3 horas</option>
+              <option value="Mais de 3 horas">Mais de 3 horas</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Informações Adicionais</h3>
+          <div class="form-group-contract">
+            <label for="hire-budget">Faixa de Orçamento*</label>
+            <select id="hire-budget" name="budget_range" required>
+              <option value="">Selecione...</option>
+              <option value="Até R$ 2.000">Até R$ 2.000</option>
+              <option value="R$ 2.000 - R$ 4.000">R$ 2.000 - R$ 4.000</option>
+              <option value="R$ 4.000 - R$ 6.000">R$ 4.000 - R$ 6.000</option>
+              <option value="R$ 6.000 - R$ 8.000">R$ 6.000 - R$ 8.000</option>
+              <option value="Acima de R$ 8.000">Acima de R$ 8.000</option>
+              <option value="A combinar">A combinar</option>
+            </select>
+          </div>
+
+          <div class="form-group-contract">
+            <label for="hire-structure">Estrutura Disponibilizada</label>
+            <select id="hire-structure" name="event_structure">
+              <option value="">Selecione...</option>
+              <option value="Palco completo">Palco completo</option>
+              <option value="Som e iluminação básicos">Som e iluminação básicos</option>
+              <option value="Apenas espaço">Apenas espaço</option>
+              <option value="Nenhuma estrutura">Nenhuma estrutura (precisamos trazer tudo)</option>
+            </select>
+          </div>
+
+          <div class="form-group-contract full-width">
+            <label for="hire-details">Detalhes Adicionais</label>
+            <textarea id="hire-details" name="event_details"
+              placeholder="Nos conte mais sobre seu evento, estrutura, expectativas, repertório desejado..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn-primary">Enviar Proposta</button>
+          <p class="disclaimer">* Campos obrigatórios. Entraremos em contato em até 48h.</p>
+        </div>
+      </form>
     </div>
   </div>
 
