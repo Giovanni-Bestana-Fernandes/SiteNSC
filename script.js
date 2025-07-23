@@ -47,7 +47,7 @@ const songs = [
     type: "youtube",
     duration: "4:06"
   },
-    {
+  {
     title: "Bete Balanço / Mania de Você",
     album: "Frejat",
     image: "./Assets/logo-nsc.png",
@@ -56,7 +56,6 @@ const songs = [
     duration: "5:12"
   }
 ];
-
 const shows = [
   {
     date: { day: '20', month: 'JUL', year: '2025' },
@@ -64,7 +63,9 @@ const shows = [
     venue: 'Encontro Carros Antigos',
     note: 'NSC / Aueba Trio',
     link: '#',
-    hasTickets: false
+    hasTickets: false,
+    hasVip: false,
+    details: 'A banda NSC se apresenta junto com o Aueba Trio no palco principal da Praça do Museu, com início às 10h. Evento gratuito e ao ar livre.'
   },
   {
     date: { day: '16', month: 'AGO', year: '2025' },
@@ -72,7 +73,10 @@ const shows = [
     venue: 'Baile de Máscaras - AABB',
     note: 'NSC / BANDA DELPHOS',
     link: '#',
-    hasTickets: false
+    hasTickets: true,
+    hasVip: true,
+    vipLink: '#',
+    details: 'A banda NSC se apresenta junto com a banda Delphos.'
   },
   {
     date: { day: '13', month: 'SET', year: '2025' },
@@ -80,15 +84,18 @@ const shows = [
     venue: 'Festa Privada',
     note: 'Show Completo',
     link: '#',
-    hasTickets: false
+    hasTickets: false,
+    hasVip: false
   },
-    {
+  {
     date: { day: '02', month: 'NOV', year: '2025' },
     city: 'BARRA BONITA, SP',
     venue: 'Breja Top',
     note: 'Show Completo',
     link: '#',
-    hasTickets: false
+    hasTickets: false,
+    hasVip: false,
+    vipLink: '#'
   },
   {
     date: { day: '22', month: 'NOV', year: '2025' },
@@ -96,9 +103,11 @@ const shows = [
     venue: 'Festa Privada',
     note: 'Show Completo',
     link: '#',
-    hasTickets: false
+    hasTickets: false,
+    hasVip: false
   }
 ];
+
 
 document.addEventListener('DOMContentLoaded', function () {
   renderShows();
@@ -112,7 +121,6 @@ function renderShows() {
   const showsList = document.getElementById('shows-list');
   if (!showsList) return;
 
-  // Evita duplicação em caso de múltiplas chamadas
   showsList.innerHTML = '';
 
   shows.forEach(show => {
@@ -146,6 +154,20 @@ function renderShows() {
     showCard.appendChild(showDate);
     showCard.appendChild(showInfo);
 
+    // Botões
+    const btnContainer = document.createElement('div');
+    btnContainer.className = 'show-buttons';
+
+    if (show.hasVip && show.vipLink) {
+      const vipBtn = document.createElement('a');
+      vipBtn.href = show.vipLink;
+      vipBtn.className = 'btn-primary btn-sm btn-vip';
+      vipBtn.textContent = 'VIP';
+      vipBtn.setAttribute('target', '_blank');
+      vipBtn.setAttribute('rel', 'noopener noreferrer');
+      btnContainer.appendChild(vipBtn);
+    }
+
     if (show.hasTickets && show.link) {
       const ticketBtn = document.createElement('a');
       ticketBtn.href = show.link;
@@ -153,12 +175,36 @@ function renderShows() {
       ticketBtn.textContent = 'Ingressos';
       ticketBtn.setAttribute('target', '_blank');
       ticketBtn.setAttribute('rel', 'noopener noreferrer');
-      showCard.appendChild(ticketBtn);
+      btnContainer.appendChild(ticketBtn);
     }
 
+    if (show.details) {
+      const toggleBtn = document.createElement('button');
+      toggleBtn.className = 'btn-more';
+      toggleBtn.textContent = 'Ver mais';
+      toggleBtn.setAttribute('aria-expanded', 'false');
+
+      const detailsDiv = document.createElement('div');
+      detailsDiv.className = 'show-details';
+      detailsDiv.textContent = show.details;
+      detailsDiv.style.display = 'none';
+
+      toggleBtn.addEventListener('click', () => {
+        const expanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        toggleBtn.setAttribute('aria-expanded', !expanded);
+        toggleBtn.textContent = expanded ? 'Ver mais' : 'Ver menos';
+        detailsDiv.style.display = expanded ? 'none' : 'block';
+      });
+
+      showCard.appendChild(toggleBtn);
+      showCard.appendChild(detailsDiv);
+    }
+
+    showCard.appendChild(btnContainer);
     showsList.appendChild(showCard);
   });
 }
+
 
 
 function setupMusicPlayer() {
