@@ -2,7 +2,7 @@
   --rock-red: #DC2626;
   --rock-orange: #EA580C;
   --rock-gold: #D97706;
-  --rock-purple: #8b48ff;
+  --rock-purple: #663cad;
   --background: hsl(222, 13%, 12%);
   --foreground: #f1f1f1;
   --card-bg: #1b1b1b;
@@ -97,6 +97,7 @@ img {
   color:white;
     padding: 7px;
   border-radius: 4px;
+  margin-top: 20px;
 }
 
 .btn-outline:hover {
@@ -136,7 +137,7 @@ img {
 
 .logo {
   font-family: 'Rock Salt', cursive;
-  width: 100px;
+  width: 70px;
   color: var(--rock-purple);
   margin: 0;
 }
@@ -199,7 +200,7 @@ img {
   height: 100vh;
   min-height: 700px;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-              url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+              url('./Assets/fundo.jpg') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,12 +295,23 @@ img {
 }
 
 .band-logo {
-  font-size: 8rem;
+  width: 40rem;
   font-weight: bold;
   color: var(--rock-purple);
   font-family: 'Rock Salt', cursive;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 800px)
+{
+  .about-image {
+    margin: 0
+  }
+
+  .band-logo {
+    width: 20rem;
+  }
 }
 
 .logo-glow {
@@ -962,8 +974,12 @@ img {
 /* Shows Section */
 .shows-list {
   margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+/* Cartão de show */
 .show-card {
   display: flex;
   align-items: center;
@@ -971,80 +987,90 @@ img {
   padding: 1.5rem;
   background: var(--card-bg);
   border-radius: var(--radius);
-  margin-bottom: 1rem;
   border: 1px solid var(--card-border);
-  transition: var(--transition);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .show-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
 }
 
+/* Data do show */
 .show-date {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   background: var(--rock-purple);
+  color: #fff;
   padding: 1rem;
   border-radius: var(--radius);
-  min-width: 80px;
+  min-width: 90px;
+  text-align: center;
 }
 
-.day {
+.show-date .day {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
 }
 
-.month {
+.show-date .month {
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.year {
+.show-date .year {
   font-size: 0.8rem;
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
+/* Informações do show */
 .show-info {
-  flex-grow: 1;
+  flex: 1;
   text-align: left;
 }
 
 .show-info h3 {
   color: var(--rock-gold);
   margin-bottom: 0.5rem;
+  font-size: 1.25rem;
 }
 
 .show-info small {
   color: var(--text-muted);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
 }
 
+/* Newsletter */
 .newsletter {
   margin-top: 4rem;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
   text-align: center;
 }
 
 .newsletter-form {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
 .newsletter-form input {
-  flex-grow: 1;
+  flex: 1 1 auto;
   padding: 12px 15px;
   border-radius: var(--radius);
   border: 1px solid var(--card-border);
   background: var(--card-bg);
   color: white;
   font-family: 'Inter', sans-serif;
+}
+
+.newsletter-form button {
+  padding: 12px 20px;
 }
 
 .small-text {
@@ -1297,7 +1323,6 @@ img {
   
   .about-image {
     order: -1;
-    margin-bottom: 2rem;
   }
   
   .now-playing {

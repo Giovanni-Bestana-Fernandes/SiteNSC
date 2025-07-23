@@ -43,12 +43,12 @@
   <section id="home" class="hero">
     <div class="hero-content fade-in">
       <h2>BANDA NSC</h2>
-      <p class="tagline">Som autêntico • Rock brasileiro • Energia inigualável</p>
+      <p class="tagline">Rock Nacional • Rock Internacional • Flashback </p>
       <div class="hero-buttons">
         <button onclick="scrollToSection('music')" class="btn-primary">
           <i class="fas fa-music"></i> Ouça agora
         </button>
-        <button onclick="scrollToSection('shows')" class="btn-outline">
+        <button onclick="scrollToSection('shows')" class="btn-primary">
           <i class="fas fa-calendar-alt"></i> Próximos shows
         </button>
       </div>
@@ -103,74 +103,82 @@
     <div class="container">
       <h2 class="section-title">Os Integrantes</h2>
       <div class="members-grid">
+
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/Gabi.png')">
           </div>
           <h3>Gabriela B. Fernandes</h3>
           <p class="role">Vocal</p>
-          <p class="bio">Voz marcante e riffs poderosos que definem o som da banda.</p>
+          <p class="bio">Com uma voz potente e presença marcante, Gabi emociona e empolga em cada verso. Sua
+            interpretação transforma cada música em uma experiência.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/gabriela_best_fernandes/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/Vitor.png')">
           </div>
           <h3>Vitor Molina</h3>
           <p class="role">Vocal e Guitarra</p>
-          <p class="bio">Grooves pesados e presença de palco inigualável.</p>
+          <p class="bio">Carisma, atitude e riffs poderosos. Vitor domina o palco e envolve o público com sua energia e
+            vocais intensos.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/vitormolina_/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/Giovanni.png')">
           </div>
           <h3>Giovanni B. Fernandes</h3>
           <p class="role">Vocal e Guitarra</p>
-          <p class="bio">Ritmo preciso e explosivo que move a banda.</p>
+          <p class="bio">Criatividade e técnica se encontram nos solos de Giovanni. Além disso, sua cartola virou marca
+            registrada no palco.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/giovanni_bestana/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/lorfo2.jpg')">
           </div>
           <h3>Leonardo Figueiredo</h3>
           <p class="role">Baterista</p>
-          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <p class="bio">Dono de um ritmo firme e criativo, Léo conduz a banda com batidas que fazem o chão tremer</p>
           <div class="social-links">
             <a href="https://www.instagram.com/leonardo.fig_/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/Leo.png')">
           </div>
           <h3>Leonardo B. Oliveira</h3>
           <p class="role">Baixista</p>
-          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <p class="bio">Com groove apurado e feeling único, seu baixo sustenta a base sonora com consistência e alma.
+          </p>
           <div class="social-links">
             <a href="https://www.instagram.com/leonardo.b_oliveira/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
 
         <div class="member-card">
-          <div class="member-avatar" style="background-image: url('https://randomuser.me/api/portraits/men/22.jpg')">
+          <div class="member-avatar" style="background-image: url('./Assets/Integrantes/Dinaldo.jpg')">
           </div>
           <h3>Dinaldo Figueiredo</h3>
           <p class="role">Técnico de Som</p>
-          <p class="bio">Solos técnicos e melodias que arrepiam.</p>
+          <p class="bio">O responsável por transformar talento em som de qualidade. Dinaldo garante que cada acorde seja
+            ouvido com perfeição.</p>
           <div class="social-links">
             <a href="https://www.instagram.com/figueiredodinaldo/"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
+
       </div>
     </div>
   </section>
+
 
   <!-- Music Section -->
   <section id="music" class="music-section">
@@ -298,18 +306,25 @@
   <section id="shows" class="section">
     <div class="container">
       <h2 class="section-title">Próximos Shows</h2>
-      <div class="shows-list" id="shows-list"></div>
 
-      <div class="newsletter">
-        <h3>Quer receber alertas de novos shows?</h3>
-        <form id="newsletter-form" class="newsletter-form">
-          <input type="email" placeholder="Seu melhor e-mail" required>
-          <button type="submit" class="btn-primary">Assinar</button>
-        </form>
-        <p class="small-text">Não enviaremos spam. Respeitamos sua privacidade.</p>
+      <div class="shows-list" id="shows-list" aria-live="polite">
+        <!-- Cards de shows serão inseridos dinamicamente via JavaScript -->
       </div>
+
+      <!-- Newsletter - pode ser ativada no futuro -->
+      <!-- 
+    <section class="newsletter" aria-label="Newsletter de Shows">
+      <h3>Quer receber alertas de novos shows?</h3>
+      <form id="newsletter-form" class="newsletter-form">
+        <input type="email" name="email" placeholder="Seu melhor e-mail" required aria-label="Digite seu e-mail">
+        <button type="submit" class="btn-primary">Assinar</button>
+      </form>
+      <p class="small-text">Não enviaremos spam. Respeitamos sua privacidade.</p>
+    </section>
+    -->
     </div>
   </section>
+
 
   <!-- Contact Section -->
   <section id="contact" class="section bg-dark">
@@ -381,7 +396,7 @@
       <div class="footer-content">
         <div class="footer-logo">
           <img class="logo" src="./Assets/logo-nsc.png"></img>
-          <p>Rock autêntico brasileiro</p>
+          <p>Rock n' Roll de qualidade</p>
         </div>
 
         <div class="footer-links">
@@ -405,7 +420,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2024 Banda NSC. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Banda NSC. Todos os direitos reservados.</p>
         <p class="quote">"A música é a linguagem universal que conecta todas as almas."</p>
       </div>
     </div>

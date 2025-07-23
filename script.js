@@ -24,24 +24,32 @@ function openWhatsApp() {
 // Lista de músicas
 const songs = [
   {
-    title: "Tempestade Urbana",
-    album: "Primeiros Passos EP",
+    title: "Do seu lado",
+    album: "Jota Quest",
     image: "./Assets/logo-nsc.png",
     src: "https://www.youtube.com/embed/9eyV_W-grok?si=QEMwGJku-s_hvx0x",
     type: "youtube",
     duration: "4:23"
   },
+  // {
+  //   title: "Noite Sem Fim",
+  //   album: "Primeiros Passos EP",
+  //   image: "./Assets/logo-nsc.png",
+  //   src: "./Assets/gravando.m4a",
+  //   type: "audio",
+  //   duration: "3:45"
+  // },
   {
-    title: "Noite Sem Fim",
-    album: "Primeiros Passos EP",
+    title: "Carla",
+    album: "Ls Jack",
     image: "./Assets/logo-nsc.png",
-    src: "./Assets/gravando.m4a",
-    type: "audio",
-    duration: "3:45"
+    src: "https://www.youtube.com/watch?v=aNtGfPYanJw",
+    type: "youtube",
+    duration: "4:06"
   },
-  {
-    title: "Cidade Dorme (Ao Vivo)",
-    album: "Show 2024",
+    {
+    title: "Bete Balanço / Mania de Você",
+    album: "Frejat",
     image: "./Assets/logo-nsc.png",
     src: "https://www.youtube.com/embed/9fbvrq6-4II?si=UAg3aGT1nycqZiwW",
     type: "youtube",
@@ -59,14 +67,6 @@ const shows = [
     hasTickets: false
   },
   {
-    date: { day: '26', month: 'JUL', year: '2025' },
-    city: 'JAÚ, SP',
-    venue: 'Riverside Pub',
-    note: 'NSC / Cover Legião Urbana',
-    link: '#',
-    hasTickets: false
-  },
-  {
     date: { day: '16', month: 'AGO', year: '2025' },
     city: 'BARRA BONITA, SP',
     venue: 'Baile de Máscaras - AABB',
@@ -78,6 +78,14 @@ const shows = [
     date: { day: '13', month: 'SET', year: '2025' },
     city: 'BARRA BONITA, SP',
     venue: 'Festa Privada',
+    note: 'Show Completo',
+    link: '#',
+    hasTickets: false
+  },
+    {
+    date: { day: '02', month: 'NOV', year: '2025' },
+    city: 'BARRA BONITA, SP',
+    venue: 'Breja Top',
     note: 'Show Completo',
     link: '#',
     hasTickets: false
@@ -104,25 +112,54 @@ function renderShows() {
   const showsList = document.getElementById('shows-list');
   if (!showsList) return;
 
+  // Evita duplicação em caso de múltiplas chamadas
+  showsList.innerHTML = '';
+
   shows.forEach(show => {
-    const showCard = document.createElement('div');
+    const showCard = document.createElement('article');
     showCard.className = 'show-card';
-    showCard.innerHTML = `
-      <div class="show-date">
-        <span class="day">${show.date.day}</span>
-        <span class="month">${show.date.month}</span>
-        <span class="year">${show.date.year}</span>
-      </div>
-      <div class="show-info">
-        <h3>${show.city}</h3>
-        <p>${show.venue}</p>
-        <small>${show.note}</small>
-      </div>
-      ${show.hasTickets ? `<a href="${show.link}" class="btn-primary btn-sm">Ingressos</a>` : ''}
+
+    const showDate = document.createElement('div');
+    showDate.className = 'show-date';
+    showDate.innerHTML = `
+      <span class="day">${show.date.day}</span>
+      <span class="month">${show.date.month}</span>
+      <span class="year">${show.date.year}</span>
     `;
+
+    const showInfo = document.createElement('div');
+    showInfo.className = 'show-info';
+
+    const city = document.createElement('h3');
+    city.textContent = show.city;
+
+    const venue = document.createElement('p');
+    venue.textContent = show.venue;
+
+    const note = document.createElement('small');
+    note.textContent = show.note;
+
+    showInfo.appendChild(city);
+    showInfo.appendChild(venue);
+    showInfo.appendChild(note);
+
+    showCard.appendChild(showDate);
+    showCard.appendChild(showInfo);
+
+    if (show.hasTickets && show.link) {
+      const ticketBtn = document.createElement('a');
+      ticketBtn.href = show.link;
+      ticketBtn.className = 'btn-primary btn-sm';
+      ticketBtn.textContent = 'Ingressos';
+      ticketBtn.setAttribute('target', '_blank');
+      ticketBtn.setAttribute('rel', 'noopener noreferrer');
+      showCard.appendChild(ticketBtn);
+    }
+
     showsList.appendChild(showCard);
   });
 }
+
 
 function setupMusicPlayer() {
   // Elementos
