@@ -39,14 +39,14 @@ const songs = [
   //   type: "audio",
   //   duration: "3:45"
   // },
-  {
-    title: "Carla",
-    album: "Ls Jack",
-    image: "./Assets/logo-nsc.png",
-    src: "https://www.youtube.com/watch?v=aNtGfPYanJw",
-    type: "youtube",
-    duration: "4:06"
-  },
+  // {
+  //   title: "Carla",
+  //   album: "Ls Jack",
+  //   image: "./Assets/logo-nsc.png",
+  //   src: "https://www.youtube.com/watch?v=aNtGfPYanJw",
+  //   type: "youtube",
+  //   duration: "4:06"
+  // },
   {
     title: "Bete Balanço / Mania de Você",
     album: "Frejat",
@@ -433,8 +433,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // Dados da galeria
   const galleryData = {
     "carioca-club": {
-      title: "Show no Carioca Club",
-      date: "15 de Julho, 2023",
+      title: "Shows",
+      date: "15 de Novembro, 2024",
       images: [
         { src: "./Assets/NSC no palco/1.jpg", alt: "Show completo da banda no Carioca Club" },
         { src: "./Assets/NSC no palco/2.jpg", alt: "Vocalista da banda no palco" },
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     "ensaio-estudio": {
       title: "Ensaio no Estúdio",
-      date: "10 de Março, 2024",
+      date: "10 de Fevereiro, 2025",
       images: [
         { src: "./Assets/Ensaio NSC/1.jpg", alt: "Show completo da banda no Carioca Club" },
         { src: "./Assets/Ensaio NSC/2.jpg", alt: "Vocalista da banda no palco" },
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     "publico-show": {
       title: "Público no Show",
-      date: "22 de Setembro, 2023",
+      date: "22 de Julho, 2025",
       images: [
         { src: "./Assets/Público/1.jpg", alt: "Show completo da banda no Carioca Club" },
         { src: "./Assets/Público/2.jpg", alt: "Vocalista da banda no palco" },
@@ -474,8 +474,8 @@ document.addEventListener('DOMContentLoaded', function () {
       ]
     },
     "gravacao-single": {
-      title: "Gravação do Novo Single",
-      date: "5 de Janeiro, 2024",
+      title: "Bastidores",
+      date: "5 de Março, 2025",
       images: [
         { src: "./Assets/Bastidores/1.jpg", alt: "Show completo da banda no Carioca Club" },
         { src: "./Assets/Bastidores/2.jpg", alt: "Vocalista da banda no palco" },
@@ -509,6 +509,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function init() {
     setupEventListeners();
     preloadImages();
+    updateGalleryCounts();
   }
 
   // Pré-carrega imagens para melhor performance
@@ -518,6 +519,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const image = new Image();
         image.src = img.src;
       });
+    });
+  }
+
+  function updateGalleryCounts() {
+    const items = document.querySelectorAll('.gallery-item');
+    items.forEach(item => {
+      const eventKey = item.getAttribute('data-event');
+      const data = galleryData[eventKey];
+      if (data) {
+        const span = item.querySelector('.gallery-caption span');
+        span.textContent = `${data.date} • ${data.images.length} fotos`;
+      }
     });
   }
 
@@ -747,73 +760,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Envio do formulário via mailto
-  if (hireForm) {
-    hireForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      const requiredFields = hireForm.querySelectorAll('[required]');
-      let isValid = true;
-
-      requiredFields.forEach(field => {
-        if (!field.value.trim()) {
-          field.style.borderColor = 'var(--rock-red)';
-          isValid = false;
-          field.classList.add('shake');
-          setTimeout(() => field.classList.remove('shake'), 500);
-        } else {
-          field.style.borderColor = '#333';
-        }
-      });
-
-      if (!isValid) {
-        const oldError = hireForm.querySelector('.form-error');
-        if (oldError) oldError.remove();
-
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'form-error';
-        errorMessage.textContent = 'Por favor, preencha todos os campos obrigatórios.';
-        hireForm.insertBefore(errorMessage, hireForm.firstChild);
-
-        hireForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        return;
-      }
-
-      const formData = new FormData(hireForm);
-      const formObject = {};
-      formData.forEach((value, key) => formObject[key] = value);
-
-      const subject = `Proposta de contratação - ${formObject.name}`;
-      const body = `
-      Nome: ${formObject.name}
-      E-mail: ${formObject.email}
-      Telefone/WhatsApp: ${formObject.phone}
-
-      Tipo de Evento: ${formObject.event_type}
-      Data do Evento: ${formObject.event_date}
-      Local do Evento: ${formObject.event_location}
-      Duração do Show: ${formObject.show_duration}
-
-      Faixa de Orçamento: ${formObject.budget_range}
-      Estrutura Disponibilizada: ${formObject.event_structure || 'Não informada'}
-
-      Detalhes Adicionais:
-      ${formObject.event_details || 'Nenhum'}
-
-      -------------------------
-      Enviado pelo site da Banda NSC
-      `.trim();
-
-      const mailtoLink = `mailto:ninguem.sabe.ao.certo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-      window.location.href = mailtoLink;
-
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-      hireForm.reset();
-    });
-  }
-
   // Validação em tempo real
   const requiredInputs = document.querySelectorAll('#hire-form [required]');
   requiredInputs.forEach(input => {
@@ -861,4 +807,319 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+
+
+});
+
+const form = {
+  "sections": [
+    {
+      "title": "Seus Dados",
+      "fields": [
+        {
+          "label": "Nome Completo*",
+          "id": "hire-name",
+          "name": "name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "label": "E-mail*",
+          "id": "hire-email",
+          "name": "email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "label": "Telefone/WhatsApp*",
+          "id": "hire-phone",
+          "name": "phone",
+          "type": "tel",
+          "required": true
+        }
+      ]
+    },
+    {
+      "title": "Detalhes do Evento",
+      "fields": [
+        {
+          "label": "Tipo de Evento*",
+          "id": "hire-event",
+          "name": "event_type",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Casamento",
+            "Aniversário",
+            "Festa Corporativa",
+            "Bar/Show",
+            "Festival",
+            "Outro"
+          ]
+        },
+        {
+          "label": "Data do Evento*",
+          "id": "hire-date",
+          "name": "event_date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "label": "Local do Evento*",
+          "id": "hire-location",
+          "name": "event_location",
+          "type": "text",
+          "placeholder": "Cidade, Estado e local específico",
+          "required": true
+        },
+        {
+          "label": "Duração do Show*",
+          "id": "hire-duration",
+          "name": "show_duration",
+          "type": "select",
+          "required": true,
+          "options": [
+            "1 hora",
+            "1 hora e 30 minutos",
+            "2 horas",
+            "2 horas e 30 minutos",
+            "3 horas",
+            "Mais de 3 horas"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Informações Adicionais",
+      "fields": [
+        {
+          "label": "Faixa de Orçamento*",
+          "id": "hire-budget",
+          "name": "budget_range",
+          "type": "select",
+          "required": true,
+          "options": [
+            "Até R$ 1.200",
+            "R$ 1.200 - R$ 2.000",
+            "R$ 2.000 - R$ 4.000",
+            "R$ 4.000 - R$ 6.000",
+            "R$ 6.000 - R$ 8.000",
+            "Acima de R$ 8.000",
+            "A combinar"
+          ]
+        },
+        {
+          "label": "Estrutura Disponibilizada",
+          "id": "hire-structure",
+          "name": "event_structure",
+          "type": "select",
+          "required": false,
+          "options": [
+            "Palco completo",
+            "Som e iluminação básicos",
+            "Apenas espaço",
+            "Nenhuma estrutura"
+          ]
+        },
+        {
+          "label": "Detalhes Adicionais",
+          "id": "hire-details",
+          "name": "event_details",
+          "type": "textarea",
+          "required": false,
+          "placeholder": "Nos conte mais sobre seu evento, estrutura, expectativas, repertório desejado..."
+        }
+      ]
+    }
+  ]
+}
+
+const monthMap = {
+  JAN: '01', FEB: '02', MAR: '03', APR: '04', MAY: '05', JUN: '06',
+  JUL: '07', AUG: '08', SEP: '09', OCT: '10', NOV: '11', DEC: '12'
+};
+
+function showDateToISO(dateObj) {
+  const day = String(dateObj.day).padStart(2, '0');
+  const month = monthMap[dateObj.month.toUpperCase()];
+  const year = dateObj.year;
+  return `${year}-${month}-${day}`;
+}
+
+const blockedDates = shows.map(show => showDateToISO(show.date));
+
+
+const hireForm = document.getElementById('hire-form');
+function createField(field) {
+  const wrapper = document.createElement('div');
+  wrapper.className = 'form-group-contract';
+
+  const label = document.createElement('label');
+  label.htmlFor = field.id;
+  label.textContent = field.label;
+  wrapper.appendChild(label);
+
+  let input;
+
+  if (field.type === 'select') {
+    input = document.createElement('select');
+    input.id = field.id;
+    input.name = field.name;
+    if (field.required) input.required = true;
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = "";
+    defaultOption.textContent = 'Selecione...';
+    input.appendChild(defaultOption);
+
+    field.options.forEach(opt => {
+      const option = document.createElement('option');
+      option.value = opt;
+      option.textContent = opt;
+      input.appendChild(option);
+    });
+
+  } else if (field.type === 'textarea') {
+    input = document.createElement('textarea');
+    input.id = field.id;
+    input.name = field.name;
+    if (field.placeholder) input.placeholder = field.placeholder;
+    if (field.required) input.required = true;
+    input.rows = 4;
+
+  } else {
+    input = document.createElement('input');
+    input.type = field.type;
+    input.id = field.id;
+    input.name = field.name;
+    if (field.placeholder) input.placeholder = field.placeholder;
+    if (field.required) input.required = true;
+
+    // Se for date, aplicar restrições abaixo
+    if (field.type === 'date') {
+      const today = new Date().toISOString().split('T')[0];
+      input.setAttribute('min', today);
+    }
+  }
+
+  wrapper.appendChild(input);
+  return wrapper;
+}
+
+// Montar o formulário
+form.sections.forEach(section => {
+  const sectionDiv = document.createElement('div');
+  sectionDiv.className = 'form-section';
+
+  const title = document.createElement('h3');
+  title.textContent = section.title;
+  sectionDiv.appendChild(title);
+
+  section.fields.forEach(field => {
+    sectionDiv.appendChild(createField(field));
+  });
+
+  hireForm.appendChild(sectionDiv);
+});
+
+// Botão enviar
+const submitBtn = document.createElement('button');
+submitBtn.type = 'submit';
+submitBtn.className = 'btn-primary';
+submitBtn.textContent = 'Enviar Proposta';
+hireForm.appendChild(submitBtn);
+
+// Área para mensagem de erro
+const errorDiv = document.createElement('div');
+errorDiv.className = 'form-error';
+errorDiv.style.display = 'none';
+hireForm.insertBefore(errorDiv, submitBtn);
+
+// Bloquear datas dos shows no input de data
+const dateInput = document.getElementById('hire-date');
+if (dateInput) {
+  dateInput.addEventListener('input', () => {
+    const selected = dateInput.value;
+    if (blockedDates.includes(selected)) {
+      alert('Data ocupada por show. Por favor, escolha outra data.');
+      dateInput.value = '';
+    }
+  });
+}
+
+// Validação + envio via mailto
+hireForm.addEventListener('submit', e => {
+  e.preventDefault();
+
+  // Reset error
+  errorDiv.style.display = 'none';
+  errorDiv.textContent = '';
+
+  const requiredFields = hireForm.querySelectorAll('[required]');
+  let isValid = true;
+
+  requiredFields.forEach(field => {
+    if (!field.value.trim()) {
+      isValid = false;
+      field.style.borderColor = 'var(--rock-red, #e00)';
+      field.classList.add('shake');
+      setTimeout(() => field.classList.remove('shake'), 500);
+    } else {
+      field.style.borderColor = '#ccc';
+    }
+  });
+
+  // Verifica se data está bloqueada
+  if (dateInput && blockedDates.includes(dateInput.value)) {
+    isValid = false;
+    errorDiv.textContent = 'Data selecionada já está ocupada por outro show.';
+    errorDiv.style.display = 'block';
+    dateInput.style.borderColor = 'var(--rock-red, #e00)';
+  }
+
+  if (!isValid) {
+    if (!errorDiv.textContent) {
+      errorDiv.textContent = 'Por favor, preencha todos os campos obrigatórios.';
+    }
+    errorDiv.style.display = 'block';
+    hireForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+
+  const formData = new FormData(hireForm);
+  const formObject = {};
+  formData.forEach((value, key) => formObject[key] = value);
+
+  const subject = `Proposta de contratação - ${formObject.name}`;
+  const body = `
+Nome: ${formObject.name}
+E-mail: ${formObject.email}
+Telefone/WhatsApp: ${formObject.phone}
+
+Tipo de Evento: ${formObject.event_type}
+Data do Evento: ${formObject.event_date}
+Local do Evento: ${formObject.event_location}
+Duração do Show: ${formObject.show_duration}
+
+Faixa de Orçamento: ${formObject.budget_range}
+Estrutura Disponibilizada: ${formObject.event_structure || 'Não informada'}
+
+Detalhes Adicionais:
+${formObject.event_details || 'Nenhum'}
+
+-------------------------
+Enviado pelo site da Banda NSC
+  `.trim();
+
+  const mailtoLink = `mailto:ninguem.sabe.ao.certo@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailtoLink;
+
+  // Caso tenha modal, fecha e reset
+  if (typeof modal !== 'undefined') {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+
+  hireForm.reset();
 });
